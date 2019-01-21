@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/collection"
+        android:icon="@mipmap/collections"
+        android:orderInCategory="100"
+        android:title="@string/collection"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/todo_tools"
+        android:icon="@mipmap/tools"
+        android:orderInCategory="100"
+        android:title="@string/todo_tools"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/dark_mode"
+        android:icon="@mipmap/dark_mode"
+        android:orderInCategory="100"
+        android:title="@string/dark_mode"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/settings"
+        android:icon="@mipmap/settings"
+        android:orderInCategory="100"
+        android:title="@string/settings"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/about_us"
+        android:icon="@mipmap/about_us"
+        android:orderInCategory="100"
+        android:title="@string/about_us"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/logout"
+        android:icon="@mipmap/logout"
+        android:orderInCategory="100"
+        android:title="@string/logout"
+        app:showAsAction="never"/>
+
+</menu>
