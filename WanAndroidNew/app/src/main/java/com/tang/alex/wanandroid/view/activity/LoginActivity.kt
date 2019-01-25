@@ -27,7 +27,7 @@ class LoginActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        window.enterTransition = Fade().setDuration(2000)
+        window.enterTransition = Fade().setDuration(1000)
         window.exitTransition = null
         initView()
     }
@@ -115,7 +115,7 @@ class LoginActivity : BaseActivity() {
         Log.e(TAG,"dismissDialog!!!")
     }
 
-    override fun showData(data: BaseBean) {
+    override fun showData(data: BaseBean,type:String) {
         if (typeLoginOrReg == "register"){
             Toast.makeText(currentActivity,"恭喜您，注册成功，快去登录吧",Toast.LENGTH_SHORT).show()
             typeLoginOrReg = "login"

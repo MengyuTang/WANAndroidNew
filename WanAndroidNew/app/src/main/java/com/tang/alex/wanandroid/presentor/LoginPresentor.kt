@@ -2,6 +2,7 @@ package com.tang.alex.wanandroid.presentor
 
 import com.tang.alex.wanandroid.model.LoginModel
 import com.tang.alex.wanandroid.model.bean.BaseBean
+import com.tang.alex.wanandroid.utils.MyObservalbeImpl
 import com.tang.alex.wanandroid.utils.network.MyObservable
 import com.tang.alex.wanandroid.view.IView
 import io.reactivex.Observer
@@ -15,28 +16,7 @@ class LoginPresentor:IPresentor {
      */
     override fun getData(map: HashMap<String, String>) {
         view?.showLoadingDialog()
-        LoginModel().getData(map,object :MyObservable(){
-            override fun subscribeActual(observer: Observer<in BaseBean>?) {
-
-            }
-
-            override fun onSuccess(data: BaseBean) {
-                view?.showData(data)
-            }
-
-            override fun onFailed(errMsg: String) {
-                view?.showErrorMessage(errMsg)
-            }
-
-            override fun onError(errMsg: String) {
-                view?.showErrorMessage(errMsg)
-            }
-
-            override fun onComplete() {
-                view?.dismissDialog()
-            }
-
-        })
+        LoginModel().getData(map,MyObservalbeImpl(view!!,"login"))
     }
 
     /**
@@ -44,28 +24,7 @@ class LoginPresentor:IPresentor {
      */
     fun register(map: HashMap<String, String>) {
         view?.showLoadingDialog()
-        LoginModel().register(map,object :MyObservable(){
-            override fun subscribeActual(observer: Observer<in BaseBean>?) {
-
-            }
-
-            override fun onSuccess(data: BaseBean) {
-                view?.showData(data)
-            }
-
-            override fun onFailed(errMsg: String) {
-                view?.showErrorMessage(errMsg)
-            }
-
-            override fun onError(errMsg: String) {
-                view?.showErrorMessage(errMsg)
-            }
-
-            override fun onComplete() {
-                view?.dismissDialog()
-            }
-
-        })
+        LoginModel().register(map,MyObservalbeImpl(view!!,"register"))
     }
 
     /**
@@ -73,28 +32,7 @@ class LoginPresentor:IPresentor {
      */
      fun logout() {
         view?.showLoadingDialog()
-        LoginModel().logout(object :MyObservable(){
-            override fun subscribeActual(observer: Observer<in BaseBean>?) {
-
-            }
-
-            override fun onSuccess(data: BaseBean) {
-                view?.showData(data)
-            }
-
-            override fun onFailed(errMsg: String) {
-                view?.showErrorMessage(errMsg)
-            }
-
-            override fun onError(errMsg: String) {
-                view?.showErrorMessage(errMsg)
-            }
-
-            override fun onComplete() {
-                view?.dismissDialog()
-            }
-
-        })
+        LoginModel().logout(MyObservalbeImpl(view!!,"logout"))
     }
 
 

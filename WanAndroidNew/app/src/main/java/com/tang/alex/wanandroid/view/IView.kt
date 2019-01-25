@@ -7,7 +7,7 @@ interface IView{
 
     fun dismissDialog()
 
-    fun showData(data:BaseBean)
+    fun showData(data:BaseBean,type:String)
 
     fun showErrorMessage(errMsg:String)
 }

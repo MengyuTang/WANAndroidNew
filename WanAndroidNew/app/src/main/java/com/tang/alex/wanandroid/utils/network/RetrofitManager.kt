@@ -66,4 +66,91 @@ class RetrofitManager {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer)
     }
+
+    /**
+     * 获取首页banner
+     */
+    fun getBanners(observer: Observer<BaseBean>){
+        apiService.getBanners()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer)
+    }
+
+    /**
+     * 获取热门搜索
+     */
+    fun getHotKeys(observer: Observer<BaseBean>){
+        apiService.getHotKeys()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer)
+    }
+
+    /**
+     * 获取常用网站列表
+     */
+    fun getCommonWebs(observer: Observer<BaseBean>){
+        apiService.getCommonWebs()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer)
+    }
+    /**
+     * 关键字搜索
+     */
+    fun searchArticles(page:String,k:String,observer: Observer<BaseBean>){
+        apiService.searchArticles(page,k)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer)
+    }
+    /**
+     * 获取知识体系
+     */
+    fun getKnowledgeTree(observer: Observer<BaseBean>){
+        apiService.getKnowledgeTree()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer)
+    }
+    /**
+     * 获取知识体系下的文章
+     */
+    fun getTreeArticles(page:String,cid:String,observer: Observer<BaseBean>){
+        apiService.getTreeArticles(page,cid)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer)
+    }
+
+    /**
+     * 获取导航数据
+     */
+    fun getNaviData(observer: Observer<BaseBean>){
+        apiService.getNaviData()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer)
+    }
+
+    /**
+     * 获取项目分类
+     */
+    fun getProjectTree(observer: Observer<BaseBean>){
+        apiService.getProjectTree()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer)
+    }
+
+    /**
+     * 获取项目列表数据
+     */
+    fun getProjectList(page:String,cid:String,observer: Observer<BaseBean>){
+        apiService.getProjectList(page,cid)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer)
+    }
 }

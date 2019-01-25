@@ -13,4 +13,7 @@
     <string name="drawer_open">打开</string>
     <string name="drawer_close">关闭</string>
     <string name="search">搜索</string>
+    <string name="label_hot_key">热门搜索</string>
+    <string name="label_common_webs">常用网站</string>
+    <string name="delete">delete</string>
 </resources>

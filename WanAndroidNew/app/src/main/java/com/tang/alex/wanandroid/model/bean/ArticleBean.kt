@@ -2,7 +2,7 @@ package com.tang.alex.wanandroid.model.bean
 
 import com.google.gson.annotations.SerializedName
 
-data class DataX(
+data class ArticleBean(
         @SerializedName("apkLink") val apkLink: String,
         @SerializedName("author") val author: String, // samlss
         @SerializedName("chapterId") val chapterId: Int, // 363

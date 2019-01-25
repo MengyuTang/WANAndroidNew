@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorAccent"
+    android:layout_height="80dp">
+
+    <View
+        android:id="@+id/place_holder_view"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
+
+    <AutoCompleteTextView
+        android:id="@+id/auto_text"
+        app:layout_constraintTop_toBottomOf="@id/place_holder_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:background="@null"
+        android:textCursorDrawable="@drawable/my_cursor"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <View
+        android:id="@+id/base_line"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <ImageView
+        android:id="@+id/iv_search"
+        android:src="@mipmap/search"
+        app:layout_constraintTop_toBottomOf="@id/place_holder_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="15dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp" />
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:src="@mipmap/back"
+        app:layout_constraintTop_toBottomOf="@id/place_holder_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="30dp"
+        android:layout_height="30dp" />
+</android.support.constraint.ConstraintLayout>

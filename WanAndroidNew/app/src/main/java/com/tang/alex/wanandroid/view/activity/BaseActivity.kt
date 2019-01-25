@@ -22,7 +22,7 @@ open class BaseActivity : AppCompatActivity(),IView {
     override fun dismissDialog() {
     }
 
-    override fun showData(data: BaseBean) {
+    override fun showData(data: BaseBean,type:String) {
     }
 
     override fun showErrorMessage(errMsg: String) {

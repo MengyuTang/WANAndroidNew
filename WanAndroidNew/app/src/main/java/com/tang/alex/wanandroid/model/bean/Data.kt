@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Data(
         @SerializedName("curPage") val curPage: Int, // 1
-        @SerializedName("datas") val datas: List<DataX>,
+        @SerializedName("datas") val datas: List<Any>,
         @SerializedName("offset") val offset: Int, // 0
         @SerializedName("over") val over: Boolean, // false
         @SerializedName("pageCount") val pageCount: Int, // 19

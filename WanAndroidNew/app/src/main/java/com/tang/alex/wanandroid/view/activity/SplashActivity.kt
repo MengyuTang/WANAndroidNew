@@ -23,7 +23,7 @@ class SplashActivity : BaseActivity() {
         currentActivity = this
         val animator:ObjectAnimator = ObjectAnimator.ofFloat(iv_logo,"rotation", 0f, 360f, 0f)
         animator.target = iv_logo
-        animator.duration = 4000
+        animator.duration = 3000
         animator.start()
         animator.addListener(object: Animator.AnimatorListener {
             override fun onAnimationRepeat(animation: Animator?) {
