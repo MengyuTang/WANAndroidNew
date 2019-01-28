@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity(),IView {
         val localLayoutParams = window.attributes
         localLayoutParams.flags = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS or localLayoutParams.flags
         initView()
-        initFragment(savedInstanceState)
+        initFragment()
     }
 
     private fun initView() {
@@ -173,7 +173,7 @@ class MainActivity : AppCompatActivity(),IView {
      * 第一次打开，新建Fragment,后面再打开，从保存的状态中恢复数据
      * @param savedInstanceState 恢复数据来源
      */
-    private fun initFragment(savedInstanceState: Bundle?){
+    private fun initFragment(){
         addFragment(homeFragment,"homeFragment")
         homeFragment.initView()
         addFragment(knowledgeFragment,"knowledgeFragment")
