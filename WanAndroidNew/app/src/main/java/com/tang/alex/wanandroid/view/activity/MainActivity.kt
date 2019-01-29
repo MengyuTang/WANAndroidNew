@@ -107,26 +107,32 @@ class MainActivity : AppCompatActivity(),IView {
             when(it.itemId){
                 R.id.home_page -> consume {
                     toolBar.title = "首页"
+                    drawerLayout.closeDrawers()
+                    mDrawerToggle.setHomeAsUpIndicator(R.mipmap.more)
                     showFragment(homeFragment)
-
                 }
                 R.id.knowledge_system -> consume{
                     toolBar.title = "知识体系"
+                    drawerLayout.closeDrawers()
+                    mDrawerToggle.setHomeAsUpIndicator(R.mipmap.more)
                     showFragment(knowledgeFragment)
-
             }
                 R.id.guide -> consume {
                     toolBar.title = "导航"
+                    drawerLayout.closeDrawers()
+                    mDrawerToggle.setHomeAsUpIndicator(R.mipmap.more)
                     showFragment(guideFragment)
-
                 }
                 R.id.projects -> consume {
                     toolBar.title = "项目"
+                    drawerLayout.closeDrawers()
+                    mDrawerToggle.setHomeAsUpIndicator(R.mipmap.more)
                     showFragment(projectsFragment)
-
                 }
                 else -> consume {
                     toolBar.title = "首页"
+                    drawerLayout.closeDrawers()
+                    mDrawerToggle.setHomeAsUpIndicator(R.mipmap.more)
                     showFragment(homeFragment)
                 }
             }
