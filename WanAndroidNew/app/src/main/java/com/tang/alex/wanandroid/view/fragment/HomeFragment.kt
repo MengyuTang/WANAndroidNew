@@ -149,4 +149,8 @@ class HomeFragment: Fragment(), IView {
     override fun showErrorMessage(errMsg: String) {
         Toast.makeText(activity,errMsg,Toast.LENGTH_SHORT).show()
     }
+
+    fun backToTop(){
+        ry_home_articles.smoothScrollToPosition(0)
+    }
 }

@@ -48,12 +48,6 @@ class ProjectsFragment: Fragment(), IView {
         getProjectTree()
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        initTab()
-        initRecyclerView()
-    }
-
     private fun initTab(){
         project_tab.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
             override fun onTabReselected(tab: TabLayout.Tab?) {
@@ -145,4 +139,8 @@ class ProjectsFragment: Fragment(), IView {
     }
 
     private val mHandler = Handler(callback)
+
+    fun backToTop(){
+        ry_projects.smoothScrollToPosition(0)
+    }
 }

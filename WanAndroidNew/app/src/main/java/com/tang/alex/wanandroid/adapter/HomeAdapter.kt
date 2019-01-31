@@ -2,6 +2,7 @@ package com.tang.alex.wanandroid.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.tang.alex.wanandroid.R
 import com.tang.alex.wanandroid.model.bean.ArticleBean
 import com.tang.alex.wanandroid.utils.GlideImageLoader
+import com.tang.alex.wanandroid.view.activity.BannerDetailActivity
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.item_article_info.view.*
@@ -63,8 +65,13 @@ class HomeAdapter(private val mContext: Context) : RecyclerView.Adapter<Recycler
                     banner.setIndicatorGravity(BannerConfig.CENTER)
                     //banner设置方法全部调用完毕时最后调用
                     banner.start()
-                    banner.setOnClickListener {
+                    banner.setOnBannerListener {
                         //TODO 根据imageLink加载相应页面
+                        val intent = Intent()
+                        intent.setClass(mContext, BannerDetailActivity::class.java)
+                        intent.putExtra("url", imageLink!![it])
+                        intent.putExtra("title",titles!![it])
+                        mContext.startActivity(intent)
                     }
                 }
             }
@@ -108,6 +115,16 @@ class HomeAdapter(private val mContext: Context) : RecyclerView.Adapter<Recycler
                     }
                     iv_collect.setOnClickListener {
                         iv_collect.isSelected = !iv_collect.isSelected
+                        //TODO 收藏或者取消收藏
+
+                    }
+
+                    this.setOnClickListener {
+                        val intent = Intent()
+                        intent.setClass(mContext, BannerDetailActivity::class.java)
+                        intent.putExtra("url", article["link"].toString())
+                        intent.putExtra("title",article["title"].toString())
+                        mContext.startActivity(intent)
                     }
                 }
             }

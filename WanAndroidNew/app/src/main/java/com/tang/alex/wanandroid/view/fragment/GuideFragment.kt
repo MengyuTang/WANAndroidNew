@@ -262,4 +262,9 @@ class GuideFragment: Fragment(), IView {
             }
         }
     }
+
+    fun backToTop(){
+        ry_content_list.smoothScrollToPosition(0)
+        ry_guide_list.smoothScrollToPosition(0)
+    }
 }

@@ -18,9 +18,9 @@ import com.tang.alex.wanandroid.R
 import com.tang.alex.wanandroid.model.bean.BaseBean
 import com.tang.alex.wanandroid.presentor.LoginPresentor
 import com.tang.alex.wanandroid.utils.BottomNavigationViewHelper
-import com.tang.alex.wanandroid.view.fragment.HomeFragment
 import com.tang.alex.wanandroid.view.IView
 import com.tang.alex.wanandroid.view.fragment.GuideFragment
+import com.tang.alex.wanandroid.view.fragment.HomeFragment
 import com.tang.alex.wanandroid.view.fragment.KnowledgeFragment
 import com.tang.alex.wanandroid.view.fragment.ProjectsFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -142,6 +142,23 @@ class MainActivity : AppCompatActivity(),IView {
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             val compat = ActivityOptionsCompat.makeSceneTransitionAnimation(currentActivity!!)
             ActivityCompat.startActivity(currentActivity!!, intent, compat.toBundle())
+        }
+        fab_top.setOnClickListener {
+            when(design_bottom_sheet.selectedItemId){
+                R.id.home_page -> consume {
+                    homeFragment.backToTop()
+                }
+                R.id.knowledge_system -> consume {
+                    knowledgeFragment.backToTop()
+                }
+                R.id.projects -> consume {
+                    projectsFragment.backToTop()
+                }
+                R.id.guide -> consume {
+                    guideFragment.backToTop()
+                }
+
+            }
         }
     }
 

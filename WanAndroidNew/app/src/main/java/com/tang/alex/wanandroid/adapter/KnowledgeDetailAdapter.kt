@@ -1,27 +1,28 @@
 package com.tang.alex.wanandroid.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
 import com.tang.alex.wanandroid.R
 import com.tang.alex.wanandroid.model.bean.ArticleBean
+import com.tang.alex.wanandroid.view.activity.BannerDetailActivity
 import kotlinx.android.synthetic.main.item_article_info.view.*
 import java.math.BigDecimal
 
-class ProjectsAdapter(private val mContext: Context) : RecyclerView.Adapter<ProjectsAdapter.ArticleHolder>() {
-    private var articles: List<ArticleBean>? = null
+class KnowledgeDetailAdapter(private val mContext: Context) : RecyclerView.Adapter<KnowledgeDetailAdapter.ArticleHolder>() {
+    private var articles: ArrayList<ArticleBean>? = null
     private val mLayoutInflater: LayoutInflater = LayoutInflater.from(mContext)
 
-    fun setDatas(articles: List<ArticleBean>) {
+    fun setDatas(articles: ArrayList<ArticleBean>) {
         this.articles = articles
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ArticleHolder {
-           return ArticleHolder(mLayoutInflater.inflate(R.layout.item_article_info, viewGroup, false))
+           return ArticleHolder(mLayoutInflater.inflate(R.layout.item_knowledge_article_info, viewGroup, false))
     }
 
     override fun onBindViewHolder(viewHolder: ArticleHolder, position: Int) {
@@ -54,18 +55,16 @@ class ProjectsAdapter(private val mContext: Context) : RecyclerView.Adapter<Proj
                             tv_time.text = article["niceDate"].toString()
                         }
                     }
-                    if (article["envelopePic"].toString().isEmpty()){
-                        picture.visibility = View.GONE
-                    }else{
-                        picture.visibility = View.VISIBLE
-                        Glide.with(mContext)
-                                .load(article["envelopePic"].toString())
-                                .into(picture)
-                    }
                     iv_collect.setOnClickListener {
                         iv_collect.isSelected = !iv_collect.isSelected
-                        //TODO 收藏或者取消收藏
+                    }
 
+                    this.setOnClickListener {
+                        val intent = Intent()
+                        intent.setClass(mContext, BannerDetailActivity::class.java)
+                        intent.putExtra("url", article["link"].toString())
+                        intent.putExtra("title",article["title"].toString())
+                        mContext.startActivity(intent)
                     }
                 }
             }

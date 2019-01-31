@@ -1,13 +1,14 @@
 package com.tang.alex.wanandroid.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.tang.alex.wanandroid.R
 import com.tang.alex.wanandroid.model.bean.KnowledgeInfo
-import com.tang.alex.wanandroid.model.bean.KnowledgeTreeBean
+import com.tang.alex.wanandroid.view.activity.KnowledgeDetailActivity
 import kotlinx.android.synthetic.main.item_knowledge.view.*
 import java.math.BigDecimal
 
@@ -43,12 +44,12 @@ class KnowledgeAdapter(mContext:Context):RecyclerView.Adapter<KnowledgeAdapter.K
                 }
                 tv_know_content.text = sbf.toString()
                 this.setOnClickListener {
-//                    val intent = Intent()
-//                    intent.setClass(context, KnowledgeDetailActivity::class.java)
-//                    intent.putExtra("title", titles[position])
-//                    intent.putExtra("name",listName)
-//                    intent.putExtra("articleMap",articleMap)
-//                    context.startActivity(intent)
+                    val intent = Intent()
+                    intent.setClass(context, KnowledgeDetailActivity::class.java)
+                    intent.putExtra("title", titles[position])
+                    intent.putExtra("name",listName)
+                    intent.putExtra("articleMap",articleMap)
+                    context.startActivity(intent)
                 }
             }
         }

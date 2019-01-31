@@ -14,6 +14,7 @@ import com.tang.alex.wanandroid.model.bean.BaseBean
 import com.tang.alex.wanandroid.model.bean.KnowledgeInfo
 import com.tang.alex.wanandroid.presentor.KnowledgeFragmentPresentor
 import com.tang.alex.wanandroid.view.IView
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_knowledge.*
 import java.math.BigDecimal
 
@@ -104,5 +105,9 @@ class KnowledgeFragment: Fragment(), IView {
     override fun onDestroyView() {
         super.onDestroyView()
         mPresentor.onDetachView()
+    }
+
+    fun backToTop(){
+        ry_knowledge.smoothScrollToPosition(0)
     }
 }

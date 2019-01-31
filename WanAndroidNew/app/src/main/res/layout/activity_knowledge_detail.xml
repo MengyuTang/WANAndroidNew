@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
+
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/banner_appBar"
+        android:id="@+id/knowledge_appBar"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:background="@color/colorAccent"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical">
         <android.support.v7.widget.Toolbar
-            android:id="@+id/banner_toolBar"
+            android:id="@+id/knowledge_toolBar"
             android:layout_width="match_parent"
             android:background="@color/colorAccent"
             app:layout_scrollFlags="scroll"
@@ -23,21 +23,21 @@
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="3dip"
-        android:progressDrawable="@drawable/web_progress_bar"
-        app:layout_constraintTop_toBottomOf="@id/banner_appBar"
-        android:visibility="gone"
-        />
+        <android.support.design.widget.TabLayout
+            android:id="@+id/knowledge_tab"
+            app:tabMode="scrollable"
+            app:layout_constraintTop_toBottomOf="@id/knowledge_appBar"
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+            android:layout_height="50dp"/>
 
-    <WebView
-        android:id="@+id/bannerDetailView"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="3dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/banner_appBar"/>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/knowledge_vPager"
+            app:layout_constraintTop_toBottomOf="@id/knowledge_appBar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+
 </android.support.constraint.ConstraintLayout>
