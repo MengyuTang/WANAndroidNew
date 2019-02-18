@@ -117,7 +117,7 @@ class KnowledgeDetailActivity : AppCompatActivity(),IView {
     }
 
     fun initDatas(position:Int){
-        var text = listName!![position]
+        val text = listName!![position]
         val id = articleMap!![text]!!
         if (null == articleInfoMap[text]){
             mPresentor.getTreeArticles(mPage.toString(),id.toString())

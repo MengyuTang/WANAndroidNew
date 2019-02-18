@@ -16,10 +16,12 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/ry_projects"
-        app:layout_constraintTop_toTopOf="parent"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/projects_vPager"
+        app:layout_constraintTop_toBottomOf="@id/project_tab"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginTop="50dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"/>
+
 </android.support.constraint.ConstraintLayout>

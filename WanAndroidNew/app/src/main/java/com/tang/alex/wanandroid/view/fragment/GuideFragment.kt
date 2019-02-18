@@ -99,6 +99,11 @@ class GuideFragment: Fragment(), IView {
         titleAdapter = GuideTitleAdapter(activity!!)
         ry_guide_list.adapter = titleAdapter
         titleAdapter!!.setDatas(navis)
+        titleAdapter!!.setMyClickListener(object :GuideTitleAdapter.MyClickListener{
+            override fun onClick(position: Int) {
+                ry_guide_list.smoothScrollToPosition(position)
+            }
+        })
     }
 
     private fun getNaviData() {

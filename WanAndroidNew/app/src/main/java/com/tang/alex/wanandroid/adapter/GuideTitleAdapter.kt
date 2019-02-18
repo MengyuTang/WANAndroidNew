@@ -10,7 +10,7 @@ import com.tang.alex.wanandroid.model.bean.NaviBean
 import kotlinx.android.synthetic.main.item_guide_title.view.*
 import java.util.*
 
-class GuideTitleAdapter(private val mContext: Context): RecyclerView.Adapter<GuideTitleAdapter.TitleViewHolder>() {
+class GuideTitleAdapter(mContext: Context): RecyclerView.Adapter<GuideTitleAdapter.TitleViewHolder>() {
 
     private var guideTitles =  ArrayList<NaviBean>()
 
@@ -44,11 +44,11 @@ class GuideTitleAdapter(private val mContext: Context): RecyclerView.Adapter<Gui
         if (guideTitles.size>0){
             with(holder.itemView){
                 this.tv_guide.text = guideTitles[position].name
+                this.tv_guide.setTextColor(resources.getColor(R.color.deep_gray))
                 this.tv_guide.setOnClickListener {
                     listener?.onClick(position)
+                    this.tv_guide.setTextColor(resources.getColor(R.color.colorAccent))
                 }
-//                this.setBackgroundResource(R.color.color_light_gray)
-//                this.tv_guide.setTextColor(resources.getColor(R.color.deep_gray))
             }
         }
     }

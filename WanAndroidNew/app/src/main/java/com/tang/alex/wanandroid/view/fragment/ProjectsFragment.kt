@@ -5,8 +5,10 @@ import android.os.Handler
 import android.os.Message
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.content.ContextCompat
-import android.support.v7.widget.LinearLayoutManager
+import android.support.v4.view.ViewPager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +16,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.google.gson.Gson
 import com.tang.alex.wanandroid.R
-import com.tang.alex.wanandroid.adapter.ProjectsAdapter
 import com.tang.alex.wanandroid.model.bean.ArticleBean
 import com.tang.alex.wanandroid.model.bean.BaseBean
 import com.tang.alex.wanandroid.model.bean.KnowledgeTreeBean
@@ -38,7 +39,9 @@ class ProjectsFragment: Fragment(), IView {
 
     private var articleInfos = ArrayList<ArticleBean>()
 
-    private var adapter:ProjectsAdapter? = null
+    var listFragments = ArrayList<ProjectTabFragment>()
+
+    private var contentAdapter:ContentPagerAdapter? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_projects,container,false)
     }
@@ -60,25 +63,42 @@ class ProjectsFragment: Fragment(), IView {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 val position:Int = project_tab.selectedTabPosition
                 val item = trees[position]
+                projects_vPager.currentItem = position
                 mPresentor.getProjectList(mPage.toString(),item.id.toString())
             }
         })
 
+        listFragments.clear()
         for (item in trees){
             val tab = project_tab.newTab()
             tab.text = item.name
             project_tab.addTab(tab)
+            val fragment = ProjectTabFragment()
+            val bundle = Bundle()
+            bundle.putString("item",item.name)
+            fragment.arguments = bundle
+            listFragments.add(fragment)
         }
         project_tab.setTabTextColors(ContextCompat.getColor(activity!!,R.color.color_light_gray), ContextCompat.getColor(activity!!,R.color.white))
         project_tab.setSelectedTabIndicatorColor(ContextCompat.getColor(activity!!, R.color.white))
+        contentAdapter = ContentPagerAdapter(childFragmentManager)
+        projects_vPager.adapter = contentAdapter
+        projects_vPager.offscreenPageLimit = listFragments.size
+        projects_vPager.currentItem = 0
+        projects_vPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(project_tab))
     }
 
     private fun initRecyclerView() {
         if (articleInfos.isNotEmpty()) {
-            adapter = ProjectsAdapter(activity!!)
-            ry_projects.layoutManager = LinearLayoutManager(activity!!)
-            ry_projects.adapter = adapter
-            adapter!!.setDatas(articleInfos)
+            val article = articleInfos[0] as Map<Any,Any>
+            val chapterName = article["chapterName"].toString()
+            for (fragment in listFragments){
+                val item = fragment.arguments!!.getSerializable("item").toString()
+                if (chapterName == item){
+                    fragment.setDatas(articleInfos)
+                    contentAdapter!!.notifyDataSetChanged()
+                }
+            }
         }
     }
 
@@ -129,6 +149,7 @@ class ProjectsFragment: Fragment(), IView {
         super.onDestroy()
         mPresentor.onDetachView()
     }
+
     private val callback = Handler.Callback{
         if (it.what == 1){
             initTab()
@@ -141,6 +162,21 @@ class ProjectsFragment: Fragment(), IView {
     private val mHandler = Handler(callback)
 
     fun backToTop(){
-        ry_projects.smoothScrollToPosition(0)
+        val pos = project_tab.selectedTabPosition
+        listFragments[pos].smoothScrollToTop()
+    }
+
+    inner class ContentPagerAdapter(fm: FragmentManager): FragmentPagerAdapter(fm) {
+        override fun getItem(position: Int): Fragment {
+            return listFragments[position]
+        }
+
+        override fun getCount(): Int {
+            return listFragments.size
+        }
+
+        override fun getPageTitle(position: Int): CharSequence? {
+            return trees[position].name
+        }
     }
 }

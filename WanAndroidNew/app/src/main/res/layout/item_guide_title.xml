@@ -12,7 +12,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
         android:textSize="18sp"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/deep_gray"
         android:textStyle="bold"
         android:gravity="left"
         android:layout_width="150dp"
